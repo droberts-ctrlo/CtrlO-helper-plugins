@@ -1,0 +1,14 @@
+{
+  "author": {
+    "email": "d.roberts@ctrlo.com",
+    "name": "Dave Roberts"
+  },
+  "license": "MIT",
+  "name": "ctrlo-helper-plugins",
+  "version": "1.0.0",
+  "description": "Helper plugins for CtrlO",
+  "devDependencies": {
+    "typescript": "^5.6.2",
+    "webpack": "^5.94.0"
+  }
+}
