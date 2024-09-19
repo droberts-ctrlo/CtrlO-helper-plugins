@@ -18,7 +18,7 @@ export declare class FengariPlugin {
     private basePath;
     /**
      * FengariPlugin constructor
-     * @param basePath The base path of the project
+     * @param basePath The base path to download the script to
      */
     constructor(basePath: string);
     apply(compiler: Compiler): void;

@@ -28,14 +28,14 @@ export class ChmodPlugin {
 export class FengariPlugin {
     /**
      * FengariPlugin constructor
-     * @param basePath The base path of the project
+     * @param basePath The base path to download the script to
      */
     constructor(private basePath: string) {
     }
 
     apply(compiler: Compiler) {
         compiler.hooks.done.tap('fengari', () => {
-            exec(`wget -O ${this.basePath}/public/js/fengari-web.js https://raw.githubusercontent.com/ctrlo/GADS/dev/public/js/fengari-web.js`, (err) => {
+            exec(`wget -O ${this.basePath.endsWith('/') ? this.basePath : this.basePath + '/'}fengari-web.js https://raw.githubusercontent.com/ctrlo/GADS/dev/public/js/fengari-web.js`, (err) => {
                 if (err) throw err;
                 console.log('Downloaded fengari-web.js');
             });
