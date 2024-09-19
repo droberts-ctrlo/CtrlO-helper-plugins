@@ -15,7 +15,7 @@ class ChmodPlugin {
     }
     apply(compiler) {
         compiler.hooks.done.tap('chmod plugin', () => {
-            (0, child_process_1.exec)(`chmod -Rc o+rX ${this.basePath}`, (err) => {
+            (0, child_process_1.exec)(`chmod -R o+rX ${this.basePath}`, (err) => {
                 if (err)
                     throw err;
                 console.log('Changed permissions');
@@ -37,7 +37,7 @@ class FengariPlugin {
     }
     apply(compiler) {
         compiler.hooks.done.tap('fengari', () => {
-            (0, child_process_1.exec)(`wget -O ${this.basePath.endsWith('/') ? this.basePath : this.basePath + '/'}fengari-web.js https://raw.githubusercontent.com/ctrlo/GADS/dev/public/js/fengari-web.js`, (err) => {
+            (0, child_process_1.exec)(`wget -qO ${this.basePath.endsWith('/') ? this.basePath : this.basePath + '/'}fengari-web.js https://raw.githubusercontent.com/ctrlo/GADS/dev/public/js/fengari-web.js`, (err) => {
                 if (err)
                     throw err;
                 console.log('Downloaded fengari-web.js');
@@ -59,7 +59,7 @@ class JestPlugin {
     }
     apply(compiler) {
         compiler.hooks.beforeCompile.tapAsync('jestPlugin', (_, callback) => {
-            (0, child_process_1.exec)(`yarn jest --config=${this.config} --color=false`, (err) => {
+            (0, child_process_1.exec)(`yarn jest --silent --config=${this.config} --color=false`, (err) => {
                 if (err)
                     throw err;
                 console.log('Jest tests complete and passed');
